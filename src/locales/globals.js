@@ -1,6 +1,6 @@
 export default {
-  companyName: 'Jincor',
-  tokenName: 'JCR',
+  companyName: 'My Pizza Pie',
+  tokenName: 'MPP',
   telegramLink: 'http://t.me/jincorICOeng',
   facebookLink: 'https://www.facebook.com/jincorlimited/',
   twitterLink: 'https://twitter.com/jincor_ico',
