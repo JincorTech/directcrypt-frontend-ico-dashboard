@@ -25,7 +25,7 @@ const AuthWrapper = (props) => {
       {renderAlert()}
       <div className={s.form}>
         <div className={s.logo}>
-          <img src={require('../../../assets/images/logo.svg')}/>
+          <img src={require('../../../assets/images/logo.png')}/>
         </div>
 
         <div className={s.body}>
