@@ -1,12 +1,12 @@
 export default {
   companyName: 'My Pizza Pie',
-  tokenName: 'MPP',
-  telegramLink: 'http://t.me/jincorICOeng',
-  facebookLink: 'https://www.facebook.com/jincorlimited/',
-  twitterLink: 'https://twitter.com/jincor_ico',
-  faqLink: 'https://s3.eu-west-2.amazonaws.com/jincor-ico/docs/jincor_contributor_account_faq.pdf',
-  agreementLink: 'https://jincor.com/en/agreement',
-  whitepaperLink: 'https://jincor.com/whitepaper',
-  partnersMail: 'partners@jincor.com',
-  supportMail: 'support@jincor.com'
+  tokenName: 'PZA',
+  telegramLink: 'https://t.me/joinchat/CucAN1BTnZyQckwHkTuTng',
+  facebookLink: 'https://www.facebook.com/mypizzapie/',
+  twitterLink: 'https://twitter.com/my_pizza_pie',
+  faqLink: 'https://mypizzapie.io/contributor_account_faq.pdf',
+  agreementLink: 'https://mypizzapie.io/mpp_agreement.pdf',
+  whitepaperLink: 'https://mypizzapie.io/mpp_whitepaper.pdf',
+  partnersMail: 'partners@mypizzapie.io',
+  supportMail: 'support@mypizzapie.io'
 };
