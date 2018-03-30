@@ -1,5 +1,3 @@
-@use postcss-short;
-
 .wrap {
   position: relative;
 }
@@ -15,7 +13,7 @@
   transition: 0.1s linear all;
 
   &:focus {
-    border: 1px solid #0080ff;
+    border: 1px solid #da0812;
   }
 }
 

@@ -1,0 +1,10 @@
+version: '2'
+services:
+  frontend-ico-dashboard:
+    image: jincort/mypizzapie-frontend-ico-dashboard:production
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+       - "80:80"
+    tty: true

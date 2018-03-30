@@ -1,13 +1,10 @@
-@use postcss-short;
-@use postcss-inline-svg;
-
 .checkbox {
   font: normal 15px Roboto;
   color: #444;
 
   & a {
     font: normal 15px Roboto;
-    color: #0080ff;
+    color: #da0812;
     text-decoration: none;
     pointer-events: painted;
 

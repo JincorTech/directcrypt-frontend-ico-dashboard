@@ -1,5 +1,3 @@
-@use postcss-short;
-
 .button {
   margin-bottom: 15px;
 }
@@ -22,7 +20,7 @@
 
 .currencybutton {
   font: normal 16px Roboto;
-  color: #0080ff;
+  color: #da0812;
   background-color: transparent;
   outline: none;
   margin: 0;
