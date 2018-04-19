@@ -26,8 +26,15 @@ class BuyTokensForm extends Component {
     this._investAllIn = this._investAllIn.bind(this);
   }
 
+  isNumeric(n) {
+    return !Number.isNaN(parseFloat(n)) && Number.isFinite(parseFloat(n));
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (!nextProps.ethValue || !nextProps.rate || !nextProps.expectedTxFee) {
+    if (!nextProps.ethValue
+      || !this.isNumeric(nextProps.ethValue)
+      || !nextProps.rate
+      || !nextProps.expectedTxFee) {
       return;
     }
 
