@@ -8,8 +8,12 @@ import Globals from '../../../locales/globals';
 const Sidebar = (props) => {
   const {
     t,
-    closeSidebar
+    closeSidebar,
+    kyc,
+    location
   } = props;
+
+  const { pathname } = location;
 
   return (
     <div className={s.sidebar}>
@@ -50,11 +54,11 @@ const Sidebar = (props) => {
           activeClassName={s.active}
           to={namedRoutes.account}>{t('account')}</Link>
 
-        {/* {!kyc
+        {!kyc
           ? <a
             className={pathname === namedRoutes.verification ? s.activeLink : s.link}
             href={namedRoutes.verification}>{t('verification')}</a>
-        : null} */}
+        : null}
       </div>
 
       <div className={s.socials}>

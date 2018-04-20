@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import loadScript from '../../../utils/scriptLoader';
+// import loadScript from '../../../utils/scriptLoader';
 import s from './styles.css';
 
 import notify from '../../../utils/notifications';
 
-import { get } from '../../../utils/fetch';
+// import { get } from '../../../utils/fetch';
 
-import Spinner from '../../common/Spinner';
+// import Spinner from '../../common/Spinner';
 import Globals from '../../../locales/globals';
 
 class Verification extends Component {
@@ -24,24 +24,24 @@ class Verification extends Component {
     };
   }
 
-  componentWillMount() {
-    loadScript('https://lon.netverify.com/widget/jumio-verify/2.0/iframe-script.js')
-      .then(() => {
-        get('/kyc/init')
-          .then(({ authorizationToken }) => {
-            window.JumioClient.setVars({
-              authorizationToken
-            }).initVerify('jumio');
-          })
-          .catch((e) => {
-            if (e.statusCode >= 500) {
-              this.props.notify('error', 'Server error');
-            }
+  // componentWillMount() {
+  //   loadScript('https://lon.netverify.com/widget/jumio-verify/2.0/iframe-script.js')
+  //     .then(() => {
+  //       get('/kyc/init')
+  //         .then(({ authorizationToken }) => {
+  //           window.JumioClient.setVars({
+  //             authorizationToken
+  //           }).initVerify('jumio');
+  //         })
+  //         .catch((e) => {
+  //           if (e.statusCode >= 500) {
+  //             this.props.notify('error', 'Server error');
+  //           }
 
-            this.setState({ error: e.error });
-          });
-      });
-  }
+  //           this.setState({ error: e.error });
+  //         });
+  //     });
+  // }
 
   render() {
     const { t, kycStatus } = this.props;
@@ -55,7 +55,7 @@ class Verification extends Component {
         case 'pending':
           return renderPending();
         default:
-          return renderPlugin();
+          return renderText();
       }
     };
 
@@ -87,11 +87,9 @@ class Verification extends Component {
       </div>
     );
 
-    const renderPlugin = () => (
-      <div id="jumio">
-        <div className={s.spinner}>
-          <Spinner color="#0080ff"/>
-        </div>
+    const renderText = () => (
+      <div className={s.verificationText}>
+        In order to participate in token sale, all users required to pass KYC/AML procedure. Please, contact our support at <a href={'mailto:support@mypizzapie.com'}>support@mypizzapie.com</a> or using the help box in bottom right corner of the page. Thank you for cooperation
       </div>
     );
 

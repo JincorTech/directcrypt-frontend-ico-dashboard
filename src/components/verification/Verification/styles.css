@@ -15,3 +15,8 @@
   position: absolute;
   z-index: -1;
 }
+
+.verificationText {
+  font: 16px Roboto;
+  color: #6e7987;
+}
