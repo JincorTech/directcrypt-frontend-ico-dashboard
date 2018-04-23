@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import s from './styles.css';
 
-import { fetchTransactions } from '../../../redux/modules/transactions/transactions';
+import { fetchTransactions, stopTransactionsPolling } from '../../../redux/modules/transactions/transactions';
 import { openMakeDepositPopup } from '../../../redux/modules/app/makeDepositPopup';
 
 import Transaction from '../../../components/transactions/Transaction';
@@ -12,6 +12,10 @@ import Button from '../../../components/common/Button';
 class Transactions extends Component {
   componentWillMount() {
     this.props.fetchTransactions();
+  }
+
+  componentWillUnmount() {
+    this.props.stopTransactionsPolling();
   }
 
   _getSortedTransactions() {
@@ -60,6 +64,7 @@ export default connect(
   }),
   {
     fetchTransactions,
+    stopTransactionsPolling,
     openMakeDepositPopup
   }
 )(TranslatedComponent);

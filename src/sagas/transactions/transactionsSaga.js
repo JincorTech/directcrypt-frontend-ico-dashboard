@@ -1,26 +1,33 @@
-import { all, takeLatest, call, put, fork } from 'redux-saga/effects';
+import { all, call, put, fork, take, race } from 'redux-saga/effects';
 import { get } from '../../utils/fetch';
+import delay from '../../utils/sagas';
 
-import { fetchTransactions } from '../../redux/modules/transactions/transactions';
+import { fetchTransactions, STOP_TRANSACTIONS_POLLING } from '../../redux/modules/transactions/transactions';
 
 /**
  * Fetch Transactions
  */
 
 function* fetchTransactionsIterator() {
-  try {
-    const data = yield call(get, '/dashboard/transactions');
-    yield put(fetchTransactions.success(data));
-  } catch (e) {
-    yield put(fetchTransactions.failure(e));
+  while (true) {
+    try {
+      const data = yield call(get, '/dashboard/transactions');
+      yield put(fetchTransactions.success(data));
+      yield call(delay, 10000);
+    } catch (e) {
+      yield put(fetchTransactions.failure(e));
+    }
   }
 }
 
 function* fetchTransactionsSaga() {
-  yield takeLatest(
-    fetchTransactions.REQUEST,
-    fetchTransactionsIterator
-  );
+  while (true) {
+    yield take(fetchTransactions.REQUEST);
+    yield race([
+      call(fetchTransactionsIterator),
+      take(STOP_TRANSACTIONS_POLLING)
+    ]);
+  }
 }
 
 /**

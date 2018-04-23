@@ -6,7 +6,7 @@ import s from './styles.css';
 
 import { namedRoutes } from '../../../routes';
 
-import { fetchUser } from '../../../redux/modules/app/app';
+import { fetchUser, logout } from '../../../redux/modules/app/app';
 import { openSidebar, closeSidebar } from '../../../redux/modules/app/sidebar';
 
 import Sidebar from '../../../components/app/Sidebar';
@@ -32,7 +32,8 @@ class AppWrapper extends Component {
       location,
       openSidebar,
       closeSidebar,
-      sidebarIsOpen
+      sidebarIsOpen,
+      logout
     } = this.props;
 
     const {
@@ -62,7 +63,11 @@ class AppWrapper extends Component {
             </a>
           </Alert>}
         <div className={sidebarClassName}>
-          <Sidebar kyc={kycToBool()} location={location} closeSidebar={() => closeSidebar()}/>
+          <Sidebar
+            kyc={kycToBool()}
+            location={location}
+            closeSidebar={() => closeSidebar()}
+            logout={logout}/>
         </div>
         <div className={s.main}>
           <Topbar pathname={pathname} openSidebar={() => openSidebar()}/>
@@ -86,6 +91,7 @@ export default connect(
   {
     fetchUser,
     openSidebar,
-    closeSidebar
+    closeSidebar,
+    logout
   }
 )(TranslatedComponent);
