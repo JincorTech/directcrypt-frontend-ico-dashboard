@@ -14,5 +14,6 @@
   "makeDepositTitle": "Make Deposit",
   "makeDepositText": "Use this address to deposit ETH from your personal wallet to {{companyName}} Contributor’s Account",
   "copied": "Copied",
-  "copyAddress": "Copy address"
+  "copyAddress": "Copy address",
+  "signOut": "Sign Out"
 }
