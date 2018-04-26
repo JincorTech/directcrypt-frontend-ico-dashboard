@@ -7,9 +7,9 @@ export const fetchDashboard = createAsyncAction(FETCH_DASHBOARD);
 
 const initialState = from({
   ethBalance: 0,
-  jcrTokensSold: 0,
-  jcrTokenBalance: 0,
-  jcrTokenPrice: {
+  tokensSold: 0,
+  tokenBalance: 0,
+  tokenPrice: {
     ETH: 0,
     USD: 0
   },

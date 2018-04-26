@@ -14,7 +14,7 @@ const Transaction = (props) => {
     type,
     direction,
     ethAmount,
-    jcrAmount
+    tokenAmount
   } = props;
 
   const renderLabel = (label) => {
@@ -39,12 +39,12 @@ const Transaction = (props) => {
       return (<div className={s.name}>{t('sent', { amount: ethAmount })}</div>);
     }
 
-    if (type === 'jcr_transfer' && direction === 'in') {
-      return (<div className={s.name}>{t('tokensReceived', { amount: jcrAmount })}</div>);
+    if (type === 'token_transfer' && direction === 'in') {
+      return (<div className={s.name}>{t('tokensReceived', { amount: tokenAmount })}</div>);
     }
 
-    if (type === 'jcr_transfer' && direction === 'out') {
-      return (<div className={s.name}>{t('tokensSent', { amount: jcrAmount })}</div>);
+    if (type === 'token_transfer' && direction === 'out') {
+      return (<div className={s.name}>{t('tokensSent', { amount: tokenAmount })}</div>);
     }
 
     return (<div>{t('error')}</div>);
