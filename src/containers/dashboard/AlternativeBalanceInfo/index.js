@@ -21,11 +21,11 @@ class AlternativeBalanceInfo extends Component {
     const renderRate = (currency) => {
       switch (currency) {
         case 'eth':
-          return (<div className={s.val}>{bigNum(dashboard.jcrTokenPrice.ETH)} ETH</div>);
+          return (<div className={s.val}>{bigNum(dashboard.tokenPrice.ETH)} ETH</div>);
         case 'usd':
-          return (<div className={s.val}>{bigNum(dashboard.jcrTokenPrice.USD)} USD</div>);
+          return (<div className={s.val}>{bigNum(dashboard.tokenPrice.USD)} USD</div>);
         default:
-          return (<div className={s.val}>{bigNum(dashboard.jcrTokenPrice.ETH)} ETH</div>);
+          return (<div className={s.val}>{bigNum(dashboard.tokenPrice.ETH)} ETH</div>);
       }
     };
 
@@ -37,7 +37,7 @@ class AlternativeBalanceInfo extends Component {
         </div>
 
         <div className={s.block}>
-          <div className={s.val}>{bigNum(dashboard.jcrTokenBalance, 2)}</div>
+          <div className={s.val}>{bigNum(dashboard.tokenBalance, 2)}</div>
           <div className={s.label}>{t('tokenBalance')}</div>
         </div>
 
