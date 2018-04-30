@@ -38,11 +38,11 @@ const Sidebar = (props) => {
           activeClassName={s.active}
           to={namedRoutes.transactions}>{t('transactions')}</Link>
 
-        {/* <Link
+        <Link
           onClick={() => closeSidebar()}
           className={s.link}
           activeClassName={s.active}
-          to={namedRoutes.referrals}>{t('partnerProgram')}</Link> */}
+          to={namedRoutes.referrals}>{t('partnerProgram')}</Link>
 
         {/* <Link
           onClick={() => closeSidebar()}
