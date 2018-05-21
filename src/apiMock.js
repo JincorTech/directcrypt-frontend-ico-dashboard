@@ -103,9 +103,10 @@ const getMock = (path) => {
     case '/kyc/init':
       return {
         timestamp: '2017-11-09T06:47:31.467Z',
-        authorizationToken: 'c87447f8-fa43-4f98-a933-3c88be4e86ea',
-        clientRedirectUrl: 'https://lon.netverify.com/widget/jumio-verify/2.0/form?authorizationToken=c87447f8-fa43-4f98-a933-3c88be4e86ea',
-        jumioIdScanReference: '7b58a08e-19cf-4d28-a828-4bb577c6f69a'
+        message: 'https://verify.shuftipro.com/?request_id=3e7a91ead158131a46dfe16701f8cbdc2c6acccc25f0882ff800cb6fdddc4aaa',
+        reference: '59f07e23b41f6373f64a8dcb',
+        signature: '70eb5c2a232be0a35d618449a41b65f467b89cafee42e7729e78de74cc7be966',
+        status_code: 'SP2'
       };
 
     case '/dashboard/referral':
