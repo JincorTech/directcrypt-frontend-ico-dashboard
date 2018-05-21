@@ -3,6 +3,8 @@ import Globals from '../../locales/globals';
 const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 const PASSWORD_REGEXP = /^[a-zA-Z0\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/;
 export const NUMBER_REGEXP = /^\d{0,}(\.\d{0,}){0,1}$/;
+const DATE_REGEXP = /^([0-9]{4}-[0-9]{2}-[0-9]{2})$/;
+const PHONE_REGEXP = /^(\+{0,1}[0-9]{5,16})$/;
 
 export const requiredValidator = (msg) =>
   (value) =>
@@ -35,6 +37,14 @@ export const numberValidator = (msg) =>
   (value) =>
     (value && NUMBER_REGEXP.test(value) ? '' : msg || 'not number');
 
+export const phoneValidator = (msg) =>
+  (value) =>
+    (value && PHONE_REGEXP.test(value) ? '' : msg || 'not a phone');
+
+export const dateValidator = (msg) =>
+  (value) =>
+    (value && DATE_REGEXP.test(value) ? '' : msg || 'not a date');
+
 export const emailValidate = [
   requiredValidator('Must be filled'),
   email('Invalid e-mail')
@@ -63,6 +73,16 @@ export const twoFactorCode = [
 export const number = [
   requiredValidator('Must be filled'),
   numberValidator('Only numbers')
+];
+
+export const phone = [
+  requiredValidator('Must be filled'),
+  phoneValidator('Format is incorrect')
+];
+
+export const date = [
+  requiredValidator('Must be filled'),
+  dateValidator('Format is incorrect')
 ];
 
 export const ethInvest = [
