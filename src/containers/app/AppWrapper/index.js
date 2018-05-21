@@ -6,7 +6,7 @@ import s from './styles.css';
 
 import { namedRoutes } from '../../../routes';
 
-import { fetchUser, logout } from '../../../redux/modules/app/app';
+import { startUserPolling, stopUserPolling, logout } from '../../../redux/modules/app/app';
 import { openSidebar, closeSidebar } from '../../../redux/modules/app/sidebar';
 
 import Sidebar from '../../../components/app/Sidebar';
@@ -19,9 +19,11 @@ const cx = classNames.bind(s);
 
 class AppWrapper extends Component {
   componentWillMount() {
-    const { fetchUser } = this.props;
+    this.props.startUserPolling();
+  }
 
-    fetchUser();
+  componentWillUnmount() {
+    this.props.stopUserPolling();
   }
 
   render() {
@@ -89,7 +91,8 @@ export default connect(
     sidebarIsOpen: state.app.sidebar.open
   }),
   {
-    fetchUser,
+    startUserPolling,
+    stopUserPolling,
     openSidebar,
     closeSidebar,
     logout
