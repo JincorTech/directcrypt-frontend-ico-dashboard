@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { translate } from 'react-i18next';
-// import loadScript from '../../../utils/scriptLoader';
 import s from './styles.css';
 
 import notify from '../../../utils/notifications';
 
-// import { get } from '../../../utils/fetch';
+import { get } from '../../../utils/fetch';
 
-// import Spinner from '../../common/Spinner';
+import Spinner from '../../common/Spinner';
 import Globals from '../../../locales/globals';
 
 class Verification extends Component {
@@ -16,35 +14,22 @@ class Verification extends Component {
     super(props);
 
     this.state = {
-      timestamp: 0,
-      authorizationToken: '',
-      clientRedirectUrl: '',
-      jumioIdScanReference: '',
-      error: ''
+      timestamp: '',
+      message: '',
+      reference: '',
+      signature: '',
+      status_code: ''
     };
   }
 
-  // componentWillMount() {
-  //   loadScript('https://lon.netverify.com/widget/jumio-verify/2.0/iframe-script.js')
-  //     .then(() => {
-  //       get('/kyc/init')
-  //         .then(({ authorizationToken }) => {
-  //           window.JumioClient.setVars({
-  //             authorizationToken
-  //           }).initVerify('jumio');
-  //         })
-  //         .catch((e) => {
-  //           if (e.statusCode >= 500) {
-  //             this.props.notify('error', 'Server error');
-  //           }
-
-  //           this.setState({ error: e.error });
-  //         });
-  //     });
-  // }
+  componentDidMount() {
+    get('/kyc/init').then(({ message }) => {
+      this.setState({ message });
+    });
+  }
 
   render() {
-    const { t, kycStatus } = this.props;
+    const { kycStatus } = this.props;
 
     const renderPage = () => {
       switch (kycStatus) {
@@ -55,15 +40,16 @@ class Verification extends Component {
         case 'pending':
           return renderPending();
         default:
-          return renderText();
+          return renderPlugin();
       }
     };
 
     const renderFailed = () => (
       <div className={s.status}>
-        <div className={s.title}>{t('verificationFailure')}</div>
+        <div className={s.title}>Verification failure.</div>
         <div className={s.text}>
-          {t('verificationFailureText')}<br/><br/>
+          We were unable to match your account information automatically and uploaded documents.
+          Please reload the page and try again or contact {Globals.companyName} support.<br/><br/>
           <a href={`mailto:${Globals.supportMail}`}>{Globals.supportMail}</a>
         </div>
       </div>
@@ -71,26 +57,31 @@ class Verification extends Component {
 
     const renderSuccess = () => (
       <div className={s.status}>
-        <div className={s.title}>{t('verificationComplete')}</div>
+        <div className={s.title}>Account verification complete</div>
         <div className={s.text}>
-          {t('verificationCompleteText')}
+          Your personal data has been verified successfully,
+          and now you have full access to {Globals.companyName} crowdsale.
         </div>
       </div>
     );
 
     const renderPending = () => (
       <div className={s.status}>
-        <div className={s.title}>{t('verificationInProgress')}</div>
+        <div className={s.title}>Your account is being verified…</div>
         <div className={s.text}>
-          {t('verificationInProgressText')}
+          Your documents are successfully uploaded and being processed now.
+          This may take up to 15 minutes, please be patient and don’t try to
+          relaunch the verification process.
         </div>
       </div>
     );
 
-    const renderText = () => (
-      <div className={s.verificationText}>
-        In order to participate in token sale, all users required to pass KYC/AML procedure. Please, contact our support at <a href={'mailto:support@mypizzapie.com'}>support@mypizzapie.com</a> or using the help box in bottom right corner of the page. Thank you for cooperation
-      </div>
+    const renderPlugin = () => (
+      this.state.message
+        ? <iframe style={{ width: '702px', height: '502px', border: 'none' }} src={this.state.message} id="api-frame" />
+        : <div className={s.spinner}>
+          <Spinner color="#f52c5a" />
+        </div>
     );
 
     return (
@@ -101,8 +92,6 @@ class Verification extends Component {
   }
 }
 
-const TranslatedComponent = translate('verification')(Verification);
-
 export default connect(
   (state) => ({
     kycStatus: state.app.app.user.kycStatus
@@ -110,4 +99,4 @@ export default connect(
   {
     notify
   }
-)(TranslatedComponent);
+)(Verification);

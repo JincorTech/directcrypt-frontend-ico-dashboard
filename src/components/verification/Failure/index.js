@@ -7,7 +7,7 @@ const Failure = () => (
     <div className={s.title}>Verification failure.</div>
     <div className={s.text}>
       We were unable to match your account information automatically and uploaded documents.
-      Please reload the page and try again or contact Jincor support.<br/><br/>
+      Please reload the page and try again or contact {Globals.companyName} support.<br/><br/>
       <a href={`mailto:${Globals.supportMail}`}>{Globals.supportMail}</a>
     </div>
   </div>
