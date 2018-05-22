@@ -77,11 +77,15 @@ class Verification extends Component {
     );
 
     const renderPlugin = () => (
-      this.state.message
-        ? <iframe style={{ width: '702px', height: '502px', border: 'none' }} src={this.state.message} id="api-frame" />
-        : <div className={s.spinner}>
-          <Spinner color="#f52c5a" />
-        </div>
+      <div className={s.pluginContainer}>
+        {
+          this.state.message
+            ? <iframe style={{ width: '702px', height: '502px', border: 'none' }} src={this.state.message} id="api-frame" />
+            : <div className={s.spinner}>
+              <Spinner color="#f52c5a" />
+            </div>
+        }
+      </div>
     );
 
     return (

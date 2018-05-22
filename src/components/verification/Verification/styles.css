@@ -20,3 +20,8 @@
   font: 16px Roboto;
   color: #6e7987;
 }
+
+.pluginContainer {
+  overflow-x: auto;
+  max-width: 702px;
+}
