@@ -4,7 +4,7 @@ const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~
 const PASSWORD_REGEXP = /^[a-zA-Z0\d!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]{8,}$/;
 export const NUMBER_REGEXP = /^\d{0,}(\.\d{0,}){0,1}$/;
 const DATE_REGEXP = /^([0-9]{4}-[0-9]{2}-[0-9]{2})$/;
-const PHONE_REGEXP = /^(\+{0,1}[0-9]{5,16})$/;
+const PHONE_REGEXP = /^\+[1-9]\d{1,14}$/;
 
 export const requiredValidator = (msg) =>
   (value) =>
