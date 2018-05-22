@@ -48,8 +48,8 @@ class Verification extends Component {
       <div className={s.status}>
         <div className={s.title}>Verification failure.</div>
         <div className={s.text}>
-          We were unable to match your account information automatically and uploaded documents.
-          Please reload the page and try again or contact {Globals.companyName} support.<br/><br/>
+          We were unable to match your account information automatically with your uploaded documents.
+          Please reload the page and try again or contact {Globals.companyName} support for help.<br/><br/>
           <a href={`mailto:${Globals.supportMail}`}>{Globals.supportMail}</a>
         </div>
       </div>
@@ -60,7 +60,7 @@ class Verification extends Component {
         <div className={s.title}>Account verification complete</div>
         <div className={s.text}>
           Your personal data has been verified successfully,
-          and now you have full access to {Globals.companyName} crowdsale.
+          and you now have full access to the {Globals.companyName} token sale.
         </div>
       </div>
     );
@@ -69,8 +69,8 @@ class Verification extends Component {
       <div className={s.status}>
         <div className={s.title}>Your account is being verified…</div>
         <div className={s.text}>
-          Your documents are successfully uploaded and being processed now.
-          This may take up to 15 minutes, please be patient and don’t try to
+          Your documents have been successfully uploaded and are being processed now.
+          This may take up to 30 minutes, please be patient and do not try to
           relaunch the verification process.
         </div>
       </div>
