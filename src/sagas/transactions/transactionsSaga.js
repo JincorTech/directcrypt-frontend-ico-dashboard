@@ -16,6 +16,7 @@ function* fetchTransactionsIterator() {
       yield call(delay, 10000);
     } catch (e) {
       yield put(fetchTransactions.failure(e));
+      yield call(delay, 10000);
     }
   }
 }

@@ -107,6 +107,7 @@ function* startUserPollingIterator() {
       yield call(delay, 20000);
     } catch (e) {
       yield put(startUserPolling.failure(e));
+      yield call(delay, 20000);
     }
   }
 }
