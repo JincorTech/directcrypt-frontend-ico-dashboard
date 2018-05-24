@@ -48,8 +48,10 @@ class Verification extends Component {
       <div className={s.status}>
         <div className={s.title}>Verification failure.</div>
         <div className={s.text}>
-          We were unable to match your account information automatically with your uploaded documents.
-          Please reload the page and try again or contact {Globals.companyName} support for help.<br/><br/>
+          We were unable to match your account information
+          automatically with your uploaded documents.
+          Please reload the page and try again or contact
+          {Globals.companyName} support for help.<br/><br/>
           <a href={`mailto:${Globals.supportMail}`}>{Globals.supportMail}</a>
         </div>
       </div>
