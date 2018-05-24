@@ -1,4 +1,4 @@
-import { all, takeLatest, call, fork, put, take, race } from 'redux-saga/effects';
+import { all, takeLatest, call, fork, put, take, race, select } from 'redux-saga/effects';
 import { removeToken, setToken, getToken, isAuth } from '../../utils/auth';
 import { get } from '../../utils/fetch';
 import delay from '../../utils/sagas';
@@ -99,11 +99,16 @@ function* fetchUserSaga() {
  * Start user polling
  */
 
+const getAuthorized = (state) => state.app.app.authorized;
+
 function* startUserPollingIterator() {
   while (true) {
     try {
-      const data = yield call(get, apiUserPath);
-      yield put(startUserPolling.success(data));
+      const isAuthorized = yield select(getAuthorized);
+      if (isAuthorized) {
+        const data = yield call(get, apiUserPath);
+        yield put(startUserPolling.success(data));
+      }
       yield call(delay, 20000);
     } catch (e) {
       yield put(startUserPolling.failure(e));
