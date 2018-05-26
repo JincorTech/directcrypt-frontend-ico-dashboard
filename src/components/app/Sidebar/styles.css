@@ -1,5 +1,4 @@
 .sidebar {
-  min-height: 265px;
   background-color: #f8f9fa;
   height: 100%;
 }
@@ -9,7 +8,7 @@
 
   @media only screen and (max-width: 480px) {
     display: block;
-    position: absolute -17px -26px * *;
+    position: absolute 36px 26px * *;
     z-index: 1;
   }
 }
