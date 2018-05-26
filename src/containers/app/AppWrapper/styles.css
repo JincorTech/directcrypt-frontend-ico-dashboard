@@ -6,6 +6,7 @@
 }
 
 .sidebar {
+  overflow: scroll;
   size: 250px 100%;
   float: left;
   padding: 40px 40px 20px;

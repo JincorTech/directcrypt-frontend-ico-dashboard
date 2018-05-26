@@ -1,6 +1,6 @@
 .sidebar {
+  min-height: 265px;
   background-color: #f8f9fa;
-  position: relative;
   height: 100%;
 }
 
@@ -64,8 +64,7 @@
 }
 
 .socials {
-  position: absolute * * 20px *;
-  margin: 0 -10px;
+  margin: 20px 0 0 -10px;
 
   & > a {
     margin: 0 10px;
@@ -73,6 +72,11 @@
     & > img {
       size: 24px;
     }
+  }
+
+  @media only screen and (min-height: 600px) {
+    position: absolute * * 20px *;
+    margin: 0 -10px;
   }
 }
 
