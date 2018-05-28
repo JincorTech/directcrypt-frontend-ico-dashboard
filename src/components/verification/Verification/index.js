@@ -9,6 +9,8 @@ import { get } from '../../../utils/fetch';
 import Spinner from '../../common/Spinner';
 import Globals from '../../../locales/globals';
 
+const KycFailedStatus = 'failed';
+
 class Verification extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +24,23 @@ class Verification extends Component {
     };
   }
 
-  componentDidMount() {
+  kycInit = () => {
     get('/kyc/init').then(({ message }) => {
       this.setState({ message });
     });
+  }
+
+  componentDidMount() {
+    this.kycInit();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { newKycStatus } = this.props;
+    const { oldKycStatus } = prevProps;
+
+    if (oldKycStatus !== newKycStatus && newKycStatus === KycFailedStatus) {
+      this.kycInit();
+    }
   }
 
   render() {
@@ -35,7 +50,7 @@ class Verification extends Component {
       switch (kycStatus) {
         case 'verified':
           return renderSuccess();
-        case 'failed':
+        case KycFailedStatus:
           return renderFailed();
         case 'pending':
           return renderPending();
@@ -50,10 +65,11 @@ class Verification extends Component {
         <div className={s.text}>
           We were unable to match your account information
           automatically with your uploaded documents.
-          Please reload the page and try again or contact
-          {Globals.companyName} support for help.<br/><br/>
+          Please {this.state.message ? 'try again or ' : ''}
+          contact {Globals.companyName} support for help.<br/><br/>
           <a href={`mailto:${Globals.supportMail}`}>{Globals.supportMail}</a>
         </div>
+        {this.state.message ? renderPlugin() : null}
       </div>
     );
 
