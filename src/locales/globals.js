@@ -1,6 +1,6 @@
 export default {
-  companyName: 'My Pizza Pie',
-  tokenName: 'PZA',
+  companyName: 'Direct Crypt',
+  tokenName: 'DRCT',
   telegramLink: 'https://t.me/joinchat/CucAN1BTnZyQckwHkTuTng',
   facebookLink: 'https://www.facebook.com/mypizzapie/',
   twitterLink: 'https://twitter.com/my_pizza_pie',

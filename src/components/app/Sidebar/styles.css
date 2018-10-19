@@ -17,7 +17,7 @@
   margin: 0 0 40px 18px;
 
   & > img {
-    size: 135px;
+    size: 150px;
   }
 }
 
@@ -31,11 +31,11 @@
   transition: 0.1s linear all;
 
   &:hover {
-    color: #da0812;
+    color: #2e4e8b;
   }
 
   &.active {
-    color: #da0812;
+    color: #2e4e8b;
     font: bold 16px Roboto;
 
     &:hover {
@@ -47,7 +47,7 @@
 
 .activeLink {
   composes: link;
-  color: #da0812;
+  color: #2e4e8b;
   font: bold 16px Roboto;
 
   &:hover {
