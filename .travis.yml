@@ -11,17 +11,17 @@ script:
 - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ];  then echo "production"; elif [
   "$TRAVIS_BRANCH" == "develop" ]; then echo "stage"; else echo "dev-$(git rev-parse
   --short HEAD)"; fi`
-- docker build --no-cache -t jincort/mypizzapie-frontend-ico-dashboard-develop:${TAG} .
-- docker run --rm -v $(pwd):/usr/src/app jincort/mypizzapie-frontend-ico-dashboard-develop:${TAG}
+- docker build --no-cache -t jincort/directcrypt-frontend-ico-dashboard-develop:${TAG} .
+- docker run --rm -v $(pwd):/usr/src/app jincort/directcrypt-frontend-ico-dashboard-develop:${TAG}
   /bin/sh -c "yarn && cp -r .env.${ENV_FILE} .env && yarn build && yarn run lint:all"
 after_success:
 - export DOCKERFILE=`if [ "$TRAVIS_BRANCH" == "develop" ]; then echo "Dockerfile.stage";
   else echo "Dockerfile.prod" ; fi`
-- docker build -f $DOCKERFILE --no-cache -t jincort/mypizzapie-frontend-ico-dashboard:${TAG}
+- docker build -f $DOCKERFILE --no-cache -t jincort/directcrypt-frontend-ico-dashboard:${TAG}
   .
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
-- docker push jincort/mypizzapie-frontend-ico-dashboard-develop:${TAG}
-- docker push jincort/mypizzapie-frontend-ico-dashboard:${TAG}
+- docker push jincort/directcrypt-frontend-ico-dashboard-develop:${TAG}
+- docker push jincort/directcrypt-frontend-ico-dashboard:${TAG}
 notifications:
   slack:
     secure: ZRdhxdwpsHgXafGExFO51k2HhB9YAJLA2TG+/mcqJmqqRaizWJypPukBaqO+rp+G5rBbSg5wyABf2p6WlEzruBFghUwL6SVbb+ZAmvxOm1TDM6DdHcFLWSTREzvDaUYoADAwLO4vq/2I76B8dlhlbZN2ElJjGszRCUKSazjzmtToQxVZsy4iZVUfnb5x/6wE5T3vr5d950N4sSQrk/uqBG0v3QXJ9RJ0yLb+WJpJS1zjlSg4ojLV+qj7RQyLmoWotlF8L7B0PdxbSJfjuesyRlhB4nBgQFqKNTApjT7BcmaDVnU5JWsyJ41SovFO67hHMal2e7aK22Q8j9zjpC1w841tBG5kkRRS1mENUvpp1u65Ah18QMLcsb7M9H3IBH7AgvsvLFMn6zgptlDPezhRyJyMQy83GbfNl0PxSeIBEtO9hxyHCO3YzLPaDkwWljB6plUKSoN+6a3VR9k1sPQWdC69xus5skLQuK61hwS8yuTLobSBupL1Bw7j+0UqMbBGGvEalZ15QnfLFPlvbk7tG+1KexqIqDIivzX9XVpKxmOk68PfZ+mSDwQ0sivpZAUqjmRnk8f16W19eytGsm/fTEEN3x6KCdfEbKO+yGJXOxXAvi8xXmQ8HjQ4Q2Li5kdSIZn9G4dACMzdOqnZdvzH1lB7XNXOPFiXDoVm5zL09vU=

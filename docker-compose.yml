@@ -1,7 +1,7 @@
 version: '2'
 services:
   frontend-ico-dashboard:
-    image: jincort/mypizzapie-frontend-ico-dashboard:production
+    image: jincort/directcrypt-frontend-ico-dashboard:production
     build:
       context: ./
       dockerfile: Dockerfile

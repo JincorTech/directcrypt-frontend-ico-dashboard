@@ -1,8 +1,8 @@
 {
-  "name": "mypizzapie-frontend-ico-dashboard",
+  "name": "directcrypt-frontend-ico-dashboard",
   "version": "2.0.0",
   "description": "Jincor Investor Dashboard",
-  "repository": "https://github.com/JincorTech/mypizzapie-frontend-ico-dashboard",
+  "repository": "https://github.com/JincorTech/directcrypt-frontend-ico-dashboard",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
