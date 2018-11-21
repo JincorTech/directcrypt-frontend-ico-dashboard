@@ -82,7 +82,7 @@ class SignUpForm extends Component {
               component={RenderInput}
               name="firstName"
               type="text"
-              placeholder={'First Name'}
+              placeholder={'First & Middle Name'}
               validate={fullNameValidate}/>
           </div>
 
@@ -100,7 +100,7 @@ class SignUpForm extends Component {
               component={RenderInput}
               name="email"
               type="text"
-              placeholder={t('email')}
+              placeholder={t('Email')}
               validate={emailValidate}/>
           </div>
 
@@ -114,7 +114,7 @@ class SignUpForm extends Component {
           </div>
 
           <div className={s.phoneHint}>
-            For example +79083971234
+            For example +15558675309
           </div>
 
           <Field
